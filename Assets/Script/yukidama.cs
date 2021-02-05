@@ -10,8 +10,7 @@ public class yukidama : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("yukigassenPlayer");
-        moveDirection = player.transform.forward;
+        
     }
 
     // Update is called once per frame
@@ -23,6 +22,17 @@ public class yukidama : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         GameObject.Destroy(gameObject);
-        Debug.Log("destroy");
+    }
+
+    public void Melt()
+    {
+        GameObject.Destroy(gameObject);
+    }
+
+    public void SetPlayer(GameObject player)
+    {
+        this.player = player;
+        moveDirection = player.transform.forward;
+        Invoke("Melt", 2);
     }
 }
